@@ -1,0 +1,145 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Menu de jogos</title>
+		<style>
+		hr{
+		transform: rotate(90deg)
+		position:absolute;			
+		left:50%;
+		transform: rotate(90deg);
+		
+		}		
+		#j1p2{
+		position:absolute;			
+		left:25%;
+		}
+		#j1p1,#j1p3{
+		position:absolute;
+		left:15%;
+		}
+		#j2p2{
+		position:absolute;			
+		left:65%;
+		}
+		#j2p1,#j2p3{
+		position:absolute;
+		left:75%;
+		}
+		#personagem{
+		overflow: hidden;
+		background-color: #333;
+		position: fixed;
+		bottom: 50%;
+		width: 100%;
+		text-align:center;	
+		visibility: hidden;
+		}
+		#personagem input{
+		font-size:100px;
+		}
+		</style>
+		<script >
+		var jogador_personagem="";
+		var cont=0;
+		var batalhar=false;
+		function escolher(jp){
+		  if(batalhar==false){
+			jogador_personagem=jp;
+			cont=cont+1;
+			document.getElementById('personagem').style.visibility="visible";
+			if(jp=="j1p1"){
+			document.getElementById('j1p1').style.visibility="hidden";
+			}
+			if(jp=="j1p2"){
+			document.getElementById('j1p2').style.visibility="hidden";
+			}
+			if(jp=="j1p3"){
+			document.getElementById('j1p3').style.visibility="hidden";
+			}
+			if(jp=="j2p1"){
+			document.getElementById('j2p1').style.visibility="hidden";
+			}
+			if(jp=="j2p2"){
+			document.getElementById('j2p2').style.visibility="hidden";
+			}
+			if(jp=="j2p3"){
+			document.getElementById('j2p3').style.visibility="hidden";
+			}
+		  }
+		  if(batalhar==true){
+			alert();
+		  }
+		}
+		function personagem(p){
+			if(cont==3){
+			document.campo.j2p1.disabled=false;
+			document.campo.j2p2.disabled=false;
+			document.campo.j2p3.disabled=false;
+			}
+			document.getElementById('personagem').style.visibility="hidden";
+			if(jogador_personagem=="j1p1"){
+			document.campo.j1p1.value=p;
+			}
+			if(jogador_personagem=="j1p2"){
+			document.campo.j1p2.value=p;
+			}
+			if(jogador_personagem=="j1p3"){
+			document.campo.j1p3.value=p;
+			}
+			if(jogador_personagem=="j2p1"){
+			document.campo.j2p1.value=p;
+			}
+			if(jogador_personagem=="j2p2"){
+			document.campo.j2p2.value=p;
+			}
+			if(jogador_personagem=="j2p3"){
+			document.campo.j2p3.value=p;
+			}
+			if(cont==6){
+			batalhar=true;
+			alert("batalhem");
+			document.getElementById('j1p1').style.visibility="visible";
+			document.getElementById('j1p2').style.visibility="visible";
+			document.getElementById('j1p3').style.visibility="visible";
+			document.getElementById('j2p1').style.visibility="visible";
+			document.getElementById('j2p2').style.visibility="visible";
+			document.getElementById('j2p3').style.visibility="visible";
+			}
+	
+		}
+		</script>
+	</head>
+	<body>
+		<form name="campo">
+<div id="img_p1">
+<br><br><br><br><br><br><br>
+</div>
+			<input type="button" name="j1p1" id="j1p1" value="Escolha seu personagem"  onclick="escolher('j1p1')">
+			<input type="button" name="j2p1" id="j2p1" value="Escolha seu personagem"  onclick="escolher('j2p1')" disabled>
+<br><br>	
+<div id="img_p2">
+<br><br><br><br><br><br><br>
+</div>
+			<input type="button" name="j1p2" id="j1p2" value="Escolha seu personagem"  onclick="escolher('j1p2')">
+			<input type="button" name="j2p2" id="j2p2" value="Escolha seu personagem"  onclick="escolher('j2p2')" disabled>
+<br><br>
+<div id="img_p3">
+<br><br><br><br><br><br><br>
+</div>	
+			<input type="button" name="j1p3" id="j1p3" value="Escolha seu personagem"  onclick="escolher('j1p3')">	
+			<input type="button" name="j2p3" id="j2p3" value="Escolha seu personagem"  onclick="escolher('j2p3')" disabled>
+<br><br>
+
+
+
+<hr>
+<div id="personagem">
+<input type="button" value="agua" name="agua" onclick="personagem('agua')">
+<input type="button" value="terra" name="terra" onclick="personagem('terra')">
+<input type="button" value="fogo" name="fogo" onclick="personagem('fogo')">
+<input type="button" value="ar" name="ar" onclick="personagem('ar')">
+</div>
+		</form>
+	</body>
+</html>
