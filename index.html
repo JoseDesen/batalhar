@@ -1,30 +1,43 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Menu de jogos</title>
+		<title>Batalha dos elementares</title>
 		<style>
 		hr{
 		transform: rotate(90deg)
 		position:absolute;			
 		left:50%;
 		transform: rotate(90deg);
-		
-		}		
-		#j1p2{
+		width:70%;
+		height:1px;
+		background-color:black;
+		}
+		h1{
+		text-align:center;
+		}
+				
+		#j1p2,#vidaj1p2{
 		position:absolute;			
 		left:25%;
+		background-color:balck;
 		}
-		#j1p1,#j1p3{
+		#j1p1,#j1p3,#vidaj1p1,#vidaj1p3{
 		position:absolute;
 		left:15%;
 		}
-		#j2p2{
+		#j2p2,#vidaj2p2{
 		position:absolute;			
 		left:65%;
 		}
-		#j2p1,#j2p3{
+		#j2p1,#j2p3,#vidaj2p1,#vidaj2p3{
 		position:absolute;
 		left:75%;
+		}
+		#vidaj1p1,#vidaj1p2,#vidaj1p3,#vidaj2p1,#vidaj2p2,#vidaj2p3{
+		background-color:white;
+		border:none;
+		margin-top:5px;
+		visibility:hidden;
 		}
 		#personagem{
 		overflow: hidden;
@@ -43,6 +56,8 @@
 		var jogador_personagem="";
 		var cont=0;
 		var batalhar=false;
+		var atacando="";
+		var atacado="";
 		function escolher(jp){
 		  if(batalhar==false){
 			jogador_personagem=jp;
@@ -68,7 +83,126 @@
 			}
 		  }
 		  if(batalhar==true){
-			alert();
+			if(atacando==""){
+				if(jp=="j1p1"){
+				document.campo.j1p1.disabled=true;
+				document.campo.j1p2.disabled=true;
+				document.campo.j1p3.disabled=true;
+				document.campo.j2p1.disabled=false;
+				document.campo.j2p2.disabled=false;
+				document.campo.j2p3.disabled=false;
+				}
+				if(jp=="j1p2"){
+				document.campo.j1p1.disabled=true;
+				document.campo.j1p2.disabled=true;
+				document.campo.j1p3.disabled=true;
+				document.campo.j2p1.disabled=false;
+				document.campo.j2p2.disabled=false;
+				document.campo.j2p3.disabled=false;
+				}
+				if(jp=="j1p3"){
+				document.campo.j1p1.disabled=true;
+				document.campo.j1p2.disabled=true;
+				document.campo.j1p3.disabled=true;
+				document.campo.j2p1.disabled=false;
+				document.campo.j2p2.disabled=false;
+				document.campo.j2p3.disabled=false;
+				}
+				if(jp=="j2p1"){
+				document.campo.j1p1.disabled=false;
+				document.campo.j1p2.disabled=false;
+				document.campo.j1p3.disabled=false;
+				document.campo.j2p1.disabled=true;
+				document.campo.j2p2.disabled=true;
+				document.campo.j2p3.disabled=true;
+				}
+				if(jp=="j2p2"){
+				document.campo.j1p1.disabled=false;
+				document.campo.j1p2.disabled=false;
+				document.campo.j1p3.disabled=false;
+				document.campo.j2p1.disabled=true;
+				document.campo.j2p2.disabled=true;
+				document.campo.j2p3.disabled=true;
+				}
+				if(jp=="j2p3"){
+				document.campo.j1p1.disabled=false;
+				document.campo.j1p2.disabled=false;
+				document.campo.j1p3.disabled=false;
+				document.campo.j2p1.disabled=true;
+				document.campo.j2p2.disabled=true;
+				document.campo.j2p3.disabled=true;
+				}
+			atacando=jp;	
+			}else{
+			atacado=jp;
+			if(atacando=="j1p1"){
+			transmissor=document.campo.j1p1.value;
+			}
+			if(atacando=="j1p2"){
+			transmissor=document.campo.j1p2.value;
+			}
+			if(atacando=="j1p3"){
+			transmissor=document.campo.j1p3.value;
+			}
+			if(atacando=="j2p1"){
+			transmissor=document.campo.j2p1.value;
+			}
+			if(atacando=="j2p2"){
+			transmissor=document.campo.j2p2.value;
+			}
+			if(atacando=="j2p3"){
+			transmissor=document.campo.j2p3.value;
+			}
+
+			if(atacado=="j1p1"){
+			receptor=document.campo.j1p1.value;
+			}
+			if(atacado=="j1p2"){
+			receptor=document.campo.j1p2.value;
+			}
+			if(atacado=="j1p3"){
+			receptor=document.campo.j1p3.value;
+			}
+			if(atacado=="j2p1"){
+			receptor=document.campo.j2p1.value;
+			}
+			if(atacado=="j2p2"){
+			receptor=document.campo.j2p2.value;
+			}
+			if(atacado=="j2p3"){
+			receptor=document.campo.j2p3.value;
+			}
+			danos=ataque(transmissor,receptor);
+			
+			if(atacado=="j1p1"){
+			vida=document.campo.vidaj1p1.value;
+			document.campo.vidaj1p1.value=vida-danos;
+			}
+			if(atacado=="j1p2"){
+			vida=document.campo.vidaj1p2.value;
+			document.campo.vidaj1p2.value=vida-danos;
+			}
+			if(atacado=="j1p3"){
+			vida=document.campo.vidaj1p3.value;
+			document.campo.vidaj1p3.value=vida-danos;
+			}
+			if(atacado=="j2p1"){
+			vida=document.campo.vidaj2p1.value;
+			document.campo.vidaj2p1.value=vida-danos;
+			}
+			if(atacado=="j2p2"){
+			vida=document.campo.vidaj2p2.value;
+			document.campo.vidaj2p2.value=vida-danos;
+			}
+			if(atacado=="j2p3"){
+			vida=document.campo.vidaj2p3.value;
+			document.campo.vidaj2p3.value=vida-danos;
+			}
+			atacando="";
+			atacado="";
+			
+			}
+	
 		  }
 		}
 		function personagem(p){
@@ -105,36 +239,70 @@
 			document.getElementById('j2p1').style.visibility="visible";
 			document.getElementById('j2p2').style.visibility="visible";
 			document.getElementById('j2p3').style.visibility="visible";
+			document.getElementById('vidaj1p1').style.visibility="visible";
+			document.getElementById('vidaj1p2').style.visibility="visible";
+			document.getElementById('vidaj1p3').style.visibility="visible";
+			document.getElementById('vidaj2p1').style.visibility="visible";
+			document.getElementById('vidaj2p2').style.visibility="visible";
+			document.getElementById('vidaj2p3').style.visibility="visible";
 			}
 	
 		}
-		</script>
+		
+		function ataque(t,r){
+			if(t==r){
+			resultado=0;
+			}else if((t=="agua" && r=="fogo") || (t=="fogo" && r=="agua")){
+			resultado=10;
+			}else if((t=="terra" && r=="ar") || (t=="ar" && r=="terra")){
+			resultado=10;
+			}else{
+			resultado=5;
+			}
+			return resultado;
+		}
+			
+ 
+		
+
+	</script>
 	</head>
 	<body>
+<h1>Batalha dos elementares</h1>
 		<form name="campo">
 <div id="img_p1">
 <br><br><br><br><br><br><br>
 </div>
 			<input type="button" name="j1p1" id="j1p1" value="Escolha seu personagem"  onclick="escolher('j1p1')">
 			<input type="button" name="j2p1" id="j2p1" value="Escolha seu personagem"  onclick="escolher('j2p1')" disabled>
-<br><br>	
+<br>
+<input type="button" name="vidaj1p1" id="vidaj1p1" value="120">
+<input type="button" name="vidaj2p1" id="vidaj2p1" value="120">
+<br>	
 <div id="img_p2">
 <br><br><br><br><br><br><br>
 </div>
 			<input type="button" name="j1p2" id="j1p2" value="Escolha seu personagem"  onclick="escolher('j1p2')">
 			<input type="button" name="j2p2" id="j2p2" value="Escolha seu personagem"  onclick="escolher('j2p2')" disabled>
-<br><br>
+<br>
+<input type="button" name="vidaj1p2" id="vidaj1p2" value="120">
+<input type="button" name="vidaj2p2" id="vidaj2p2" value="120">
+<br>
 <div id="img_p3">
 <br><br><br><br><br><br><br>
 </div>	
 			<input type="button" name="j1p3" id="j1p3" value="Escolha seu personagem"  onclick="escolher('j1p3')">	
 			<input type="button" name="j2p3" id="j2p3" value="Escolha seu personagem"  onclick="escolher('j2p3')" disabled>
-<br><br>
+<br>
+<input type="button" name="vidaj1p3" id="vidaj1p3" value="120">
+<input type="button" name="vidaj2p3" id="vidaj2p3" value="120">
+<br>
 
 
 
 <hr>
 <div id="personagem">
+<h1>Escolha um persongem:</h1>
 <input type="button" value="agua" name="agua" onclick="personagem('agua')">
 <input type="button" value="terra" name="terra" onclick="personagem('terra')">
 <input type="button" value="fogo" name="fogo" onclick="personagem('fogo')">
