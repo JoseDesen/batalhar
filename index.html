@@ -51,6 +51,12 @@
 		#personagem input{
 		font-size:100px;
 		}
+		input{
+		color:black;
+		border-width:2px;
+		border-style:solid;
+		}
+		
 		</style>
 		<script >
 		var jogador_personagem="";
@@ -83,8 +89,13 @@
 			}
 		  }
 		  if(batalhar==true){
+
 			if(atacando==""){
 				if(jp=="j1p1"){
+				document.getElementById('j1p1').style.background="green";
+				document.getElementById('j2p1').style.background="red";
+				document.getElementById('j2p2').style.background="red";
+				document.getElementById('j2p3').style.background="red";
 				document.campo.j1p1.disabled=true;
 				document.campo.j1p2.disabled=true;
 				document.campo.j1p3.disabled=true;
@@ -93,6 +104,10 @@
 				document.campo.j2p3.disabled=false;
 				}
 				if(jp=="j1p2"){
+				document.getElementById('j1p2').style.background="green";
+				document.getElementById('j2p1').style.background="red";
+				document.getElementById('j2p2').style.background="red";
+				document.getElementById('j2p3').style.background="red";
 				document.campo.j1p1.disabled=true;
 				document.campo.j1p2.disabled=true;
 				document.campo.j1p3.disabled=true;
@@ -101,6 +116,10 @@
 				document.campo.j2p3.disabled=false;
 				}
 				if(jp=="j1p3"){
+				document.getElementById('j1p3').style.background="green";
+				document.getElementById('j2p1').style.background="red";
+				document.getElementById('j2p2').style.background="red";
+				document.getElementById('j2p3').style.background="red";
 				document.campo.j1p1.disabled=true;
 				document.campo.j1p2.disabled=true;
 				document.campo.j1p3.disabled=true;
@@ -109,6 +128,10 @@
 				document.campo.j2p3.disabled=false;
 				}
 				if(jp=="j2p1"){
+				document.getElementById('j2p1').style.background="green";
+				document.getElementById('j1p1').style.background="red";
+				document.getElementById('j1p2').style.background="red";
+				document.getElementById('j1p3').style.background="red";
 				document.campo.j1p1.disabled=false;
 				document.campo.j1p2.disabled=false;
 				document.campo.j1p3.disabled=false;
@@ -117,6 +140,10 @@
 				document.campo.j2p3.disabled=true;
 				}
 				if(jp=="j2p2"){
+				document.getElementById('j2p2').style.background="green";
+				document.getElementById('j1p1').style.background="red";
+				document.getElementById('j1p2').style.background="red";
+				document.getElementById('j1p3').style.background="red";
 				document.campo.j1p1.disabled=false;
 				document.campo.j1p2.disabled=false;
 				document.campo.j1p3.disabled=false;
@@ -125,6 +152,10 @@
 				document.campo.j2p3.disabled=true;
 				}
 				if(jp=="j2p3"){
+				document.getElementById('j2p3').style.background="green";
+				document.getElementById('j1p1').style.background="red";
+				document.getElementById('j1p2').style.background="red";
+				document.getElementById('j1p3').style.background="red";
 				document.campo.j1p1.disabled=false;
 				document.campo.j1p2.disabled=false;
 				document.campo.j1p3.disabled=false;
@@ -200,7 +231,7 @@
 			}
 			atacando="";
 			atacado="";
-			
+			cores_original();
 			}
 	
 		  }
@@ -233,6 +264,7 @@
 			if(cont==6){
 			batalhar=true;
 			alert("batalhem");
+			cores_original();
 			document.getElementById('j1p1').style.visibility="visible";
 			document.getElementById('j1p2').style.visibility="visible";
 			document.getElementById('j1p3').style.visibility="visible";
@@ -260,6 +292,100 @@
 			resultado=5;
 			}
 			return resultado;
+		}
+		function cores_original(){
+		var j1p1=document.campo.j1p1.value;
+		var j1p2=document.campo.j1p2.value;
+		var j1p3=document.campo.j1p3.value;
+		var j2p1=document.campo.j2p1.value;
+		var j2p2=document.campo.j2p2.value;
+		var j2p3=document.campo.j2p3.value;
+			if(j1p1){
+				if(j1p1=="agua"){
+					document.getElementById('j1p1').style.background="linear-gradient(blue, aqua)";
+				}
+				if(j1p1=="fogo"){
+					document.getElementById('j1p1').style.background="linear-gradient(red, yellow)";
+				}
+				if(j1p1=="terra"){
+					document.getElementById('j1p1').style.background="brown";
+				}
+				if(j1p1=="ar"){
+					document.getElementById('j1p1').style.background="white";
+				}
+			}
+			if(j1p2){
+				if(j1p2=="agua"){
+					document.getElementById('j1p2').style.background="linear-gradient(blue, aqua)";
+				}
+				if(j1p2=="fogo"){
+					document.getElementById('j1p2').style.background="linear-gradient(red, yellow)";
+				}
+				if(j1p2=="terra"){
+					document.getElementById('j1p2').style.background="brown";
+				}
+				if(j1p2=="ar"){
+					document.getElementById('j1p2').style.background="white";
+				}
+			}
+			if(j1p3){
+				if(j1p3=="agua"){
+					document.getElementById('j1p3').style.background="linear-gradient(blue, aqua)";
+				}
+				if(j1p3=="fogo"){
+					document.getElementById('j1p3').style.background="linear-gradient(red, yellow)";
+				}
+				if(j1p3=="terra"){
+					document.getElementById('j1p3').style.background="brown";
+				}
+				if(j1p3=="ar"){
+					document.getElementById('j1p3').style.background="white";
+				}
+			}
+			if(j2p1){
+				if(j2p1=="agua"){
+					document.getElementById('j2p1').style.background="linear-gradient(aqua, blue)";
+				}
+				if(j2p1=="fogo"){
+					document.getElementById('j2p1').style.background="linear-gradient(yellow, red)";
+				}
+				if(j2p1=="terra"){
+					document.getElementById('j2p1').style.background="brown";
+				}
+				if(j2p1=="ar"){
+					document.getElementById('j2p1').style.background="white";
+				}
+			}
+			if(j2p2){
+				if(j2p2=="agua"){
+					document.getElementById('j2p2').style.background="linear-gradient(aqua, blue)";
+				}
+				if(j2p2=="fogo"){
+					document.getElementById('j2p2').style.background="linear-gradient(yellow, red)";
+				}
+				if(j2p2=="terra"){
+					document.getElementById('j2p2').style.background="brown";
+				}
+				if(j2p2=="ar"){
+					document.getElementById('j2p2').style.background="white";
+				}
+			}
+			if(j2p3){
+				if(j2p3=="agua"){
+					document.getElementById('j2p3').style.background="linear-gradient(aqua, blue)";
+				}
+				if(j2p3=="fogo"){
+					document.getElementById('j2p3').style.background="linear-gradient(yellow, red)";
+				}
+				if(j2p3=="terra"){
+					document.getElementById('j2p3').style.background="brown";
+				}
+				if(j2p3=="ar"){
+					document.getElementById('j2p3').style.background="white";
+				}
+			}
+
+
 		}
 			
  
