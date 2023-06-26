@@ -64,6 +64,7 @@
 		var batalhar=false;
 		var atacando="";
 		var atacado="";
+		
 		function escolher(jp){
 		  if(batalhar==false){
 			jogador_personagem=jp;
@@ -208,32 +209,63 @@
 			if(atacado=="j1p1"){
 			vida=document.campo.vidaj1p1.value;
 			document.campo.vidaj1p1.value=vida-danos;
+			vidaAtacada=vida-danos;
+				if(vidaAtacada<10){
+				document.getElementById('j1p1').style.visibility="hidden";
+				document.getElementById('vidaj1p1').style.visibility="hidden";
+				}
 			}
 			if(atacado=="j1p2"){
 			vida=document.campo.vidaj1p2.value;
 			document.campo.vidaj1p2.value=vida-danos;
+			vidaAtacada=vida-danos;
+				if(vidaAtacada<10){
+				document.getElementById('j1p2').style.visibility="hidden";
+				document.getElementById('vidaj1p2').style.visibility="hidden";
+				}
 			}
 			if(atacado=="j1p3"){
 			vida=document.campo.vidaj1p3.value;
 			document.campo.vidaj1p3.value=vida-danos;
+			vidaAtacada=vida-danos;
+				if(vidaAtacada<10){
+				document.getElementById('j1p3').style.visibility="hidden";
+				document.getElementById('vidaj1p3').style.visibility="hidden";
+				}
 			}
 			if(atacado=="j2p1"){
 			vida=document.campo.vidaj2p1.value;
 			document.campo.vidaj2p1.value=vida-danos;
+			vidaAtacada=vida-danos;
+				if(vidaAtacada<10){
+				document.getElementById('j2p1').style.visibility="hidden";
+				document.getElementById('vidaj2p1').style.visibility="hidden";
+				}
 			}
 			if(atacado=="j2p2"){
 			vida=document.campo.vidaj2p2.value;
 			document.campo.vidaj2p2.value=vida-danos;
+			vidaAtacada=vida-danos;
+				if(vidaAtacada<10){
+				document.getElementById('j2p2').style.visibility="hidden";
+				document.getElementById('vidaj2p2').style.visibility="hidden";
+				}
 			}
 			if(atacado=="j2p3"){
 			vida=document.campo.vidaj2p3.value;
 			document.campo.vidaj2p3.value=vida-danos;
+			vidaAtacada=vida-danos;
+				if(vidaAtacada<10){
+				document.getElementById('j2p3').style.visibility="hidden";
+				document.getElementById('vidaj2p3').style.visibility="hidden";
+				}
 			}
+			ataqueCombinado(atacando);
 			atacando="";
 			atacado="";
 			cores_original();
 			}
-	
+		
 		  }
 		}
 		function personagem(p){
@@ -285,11 +317,11 @@
 			if(t==r){
 			resultado=0;
 			}else if((t=="agua" && r=="fogo") || (t=="fogo" && r=="agua")){
-			resultado=10;
+			resultado=20;
 			}else if((t=="terra" && r=="ar") || (t=="ar" && r=="terra")){
-			resultado=10;
+			resultado=20;
 			}else{
-			resultado=5;
+			resultado=10;
 			}
 			return resultado;
 		}
@@ -387,8 +419,97 @@
 
 
 		}
-			
- 
+		var personagem1=false;
+		var personagem2=false;
+		var personagem3=false;	
+		function ataqueCombinado(p){
+		document.campo.j1p1.disabled=true;
+		document.campo.j1p2.disabled=true;
+		document.campo.j1p3.disabled=true;
+		document.campo.j2p1.disabled=true;
+		document.campo.j2p2.disabled=true;
+		document.campo.j2p3.disabled=true;
+		vj1p1=document.getElementById('j1p1').style.visibility;
+		vj1p2=document.getElementById('j1p2').style.visibility;
+		vj1p3=document.getElementById('j1p3').style.visibility;
+		vj2p1=document.getElementById('j2p1').style.visibility;
+		vj2p2=document.getElementById('j2p2').style.visibility;
+		vj2p3=document.getElementById('j2p3').style.visibility;
+			if(p=="j1p1" || p=="j1p2" || p=="j1p3"){
+				if(vj1p1=="hidden"){
+				personagem1=true;
+				}
+				if(vj1p2=="hidden"){
+				personagem2=true;
+				}
+				if(vj1p3=="hidden"){
+				personagem3=true;
+				}
+			}
+			if(p=="j2p1" || p=="j2p2" || p=="j2p3"){
+				if(vj2p1=="hidden"){
+				personagem1=true;
+				}
+				if(vj2p2=="hidden"){
+				personagem2=true;
+				}
+				if(vj2p3=="hidden"){
+				personagem3=true;
+				}
+			}
+			if(p=="j1p1" || p=="j2p1"){
+			personagem1=true;
+			}
+			if(p=="j1p2" || p=="j2p2"){
+			personagem2=true;
+			}
+			if(p=="j1p3" || p=="j2p3"){
+			personagem3=true;
+			}
+			if(p=="j1p1" || p=="j1p2" || p=="j1p3"){
+				if(personagem1==false){
+				document.campo.j1p1.disabled=false;
+				}
+				if(personagem2==false){
+				document.campo.j1p2.disabled=false;
+				}
+				if(personagem3==false){
+				document.campo.j1p3.disabled=false;
+				}
+ 			}
+			if(p=="j2p1" || p=="j2p2" || p=="j2p3"){
+				if(personagem1==false){
+				document.campo.j2p1.disabled=false;
+				}
+				if(personagem2==false){
+				document.campo.j2p2.disabled=false;
+				}
+				if(personagem3==false){
+				document.campo.j2p3.disabled=false;
+				}
+ 			}
+			if(personagem1==true && personagem2==true && personagem3==true){
+			personagem1=false;
+			personagem2=false;
+			personagem3=false;
+			document.campo.j1p1.disabled=true;
+			document.campo.j1p2.disabled=true;
+			document.campo.j1p3.disabled=true;
+			document.campo.j2p1.disabled=true;
+			document.campo.j2p2.disabled=true;
+			document.campo.j2p3.disabled=true;
+				if(p=="j1p1" || p=="j1p2" || p=="j1p3"){
+				document.campo.j2p1.disabled=false;		
+				document.campo.j2p2.disabled=false;		
+				document.campo.j2p3.disabled=false;		
+				}
+				if(p=="j2p1" || p=="j2p2" || p=="j2p3"){
+				document.campo.j1p1.disabled=false;		
+				document.campo.j1p2.disabled=false;		
+				document.campo.j1p3.disabled=false;		
+				}
+			}
+		} 
 		
 
 	</script>
